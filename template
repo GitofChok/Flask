@@ -1,0 +1,29 @@
+from flask import Flask, render_template
+
+app = Flask(__Chokchai__)
+
+@app.route('/')
+def home():
+    Vacation.html = "Japan Vacation"
+    return render_template('Vacation.html')
+
+@app.route('/tech')
+def tech():
+    tech.html = "Tech"
+    return render_template('tech.html')
+
+@app.route('/myid')
+def show_id():
+    student_id = "68130594" 
+    return f"My Student ID is: {student_id}"
+
+@app.route('/draw/<int:num>')
+def draw_pattern(num):
+    result = ""
+    for i in range(num):
+        result += "xxxx<br>" 
+    
+    return f"Drawing {num} lines:<br><br>{result}"
+
+if __name__ == '__main__':
+    app.run(debug=True)
