@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-app = Flask(__Chokchai__)
+app = Flask(____)
 
 @app.route('/')
 def home():
