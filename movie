@@ -1,0 +1,60 @@
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    # ข้อมูลนักศึกษา
+    student_name = "นายโชคชัย ฟักกลัด"
+    student_id = "68130594"
+    
+
+    return f"""
+    <html>
+        <head>
+            <title>หน้าแรก</title>
+            <style>
+                body {{ font-family: sans-serif; text-align: center; padding: 50px; }}
+                h1 {{ color: #2c3e50; }}
+                .box {{ border: 1px solid #ddd; padding: 20px; display: inline-block; }}
+            </style>
+        </head>
+        <body>
+            <div class="box">
+                <h1>ข้อมูลนักศึกษา</h1>
+                <p><strong>ชื่อ:</strong> {student_name}</p>
+                <p><strong>รหัสนักศึกษา:</strong> {student_id}</p>
+                <br>
+                <!-- ลิ้งค์ไปยังหน้า /movie -->
+                <a href="/movie">ไปดูหนังแนะนำ (คลิก)</a>
+            </div>
+        </body>
+    </html>
+    """
+
+# 2. หน้า Movie
+@app.route("/movie")
+def movie():
+    return """
+    <html>
+        <head>
+            <title>Movie Page</title>
+            <style>
+                body {{ font-family: sans-serif; text-align: center; padding: 50px; background-color: #f0f8ff; }}
+                h1 {{ color: #e74c3c; }}
+            </style>
+        </head>
+        <body>
+            <h1>หนังที่ฉันชอบ</h1>
+            <p>เรื่อง: <strong>Iron Man</strong></p>
+            <p>แนว: Action / Sci-Fi</p>
+            <br>
+            <!-- ลิ้งค์กลับไปหน้าแรก -->
+            <a href="/">กลับไปหน้าข้อมูลนักศึกษา</a>
+        </body>
+    </html>
+    """
+
+# สั่งให้รันเซิร์ฟเวอร์เมื่อไฟล์ถูกเปิด
+if __name__ == "__main__":
+    app.run(debug=True)
